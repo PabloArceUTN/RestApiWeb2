@@ -51,4 +51,5 @@ production:
   <<: *default
   database: swap_production
   username: root
-  password: <%= ENV['RESTAPI_DATABASE_PASSWORD'] %>
+  password:
+#<%= ENV['RESTAPI_DATABASE_PASSWORD'] %>
