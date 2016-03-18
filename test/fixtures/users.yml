@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  password: MyString
+  firstname: MyString
+  token: MyString
+  valid_up: 2016-03-17 16:05:12
+  active: false
+
+two:
+  username: MyString
+  password: MyString
+  firstname: MyString
+  token: MyString
+  valid_up: 2016-03-17 16:05:12
+  active: false
