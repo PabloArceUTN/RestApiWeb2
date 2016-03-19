@@ -1,4 +1,6 @@
-<h1>Listing transfers</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Transfers</h1>
 
 <table>
   <thead>
@@ -13,8 +15,8 @@
   <tbody>
     <% @transfers.each do |transfer| %>
       <tr>
-        <td><%= transfer.product_req %></td>
-        <td><%= transfer.product_offer %></td>
+        <td><%= transfer.product_req_id %></td>
+        <td><%= transfer.product_offer_id %></td>
         <td><%= transfer.active %></td>
         <td><%= link_to 'Show', transfer %></td>
         <td><%= link_to 'Edit', edit_transfer_path(transfer) %></td>

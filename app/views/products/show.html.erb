@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @product.user %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
@@ -16,13 +11,13 @@
 </p>
 
 <p>
-  <strong>State:</strong>
-  <%= @product.state %>
+  <strong>Active:</strong>
+  <%= @product.active %>
 </p>
 
 <p>
-  <strong>Active:</strong>
-  <%= @product.active %>
+  <strong>User:</strong>
+  <%= @product.user %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
