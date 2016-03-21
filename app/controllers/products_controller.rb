@@ -5,11 +5,14 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    render json: @products, status: :ok
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
+    @product = Product.find(params[:id])
+   render json: @product, status: :ok
   end
 
   # GET /products/new
@@ -24,30 +27,30 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
-
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+     product = Product.new()
+     product.name = (params[:name])
+     product.description = (params[:description])
+     product.active = (params[:active])
+     product.user_id = (params[:user_id])
+     if product.save
+      render json: 'The product was Created', status: :ok
+    else
+      render json: product.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
+    product = Product.find_by id: (params[:id])
+    product.name = (params[:name])
+    product.description = (params[:description])
+    product.active = (params[:active])
+    product.user_id = (params[:user_id])
+    if product.save
+      render json: 'The product was Updated', status: :ok
+    else
+      render json: product.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,10 +58,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      render json: 'The product was Deleted', status: :ok
   end
 
   private
