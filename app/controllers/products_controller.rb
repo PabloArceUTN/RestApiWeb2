@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-    render json: @products, status: :ok
+    #@products = Product.where(:active => true).all
+    render json: Product.where(:active => true).all, status: :ok
   end
 
   # GET /products/1
