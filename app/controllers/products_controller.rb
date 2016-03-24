@@ -19,6 +19,10 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
   end
+  #Session Management Section
+  def login
+    render json: User.where(:active => true).all, status: :ok
+  end
 
   # GET /products/1/edit
   def edit
