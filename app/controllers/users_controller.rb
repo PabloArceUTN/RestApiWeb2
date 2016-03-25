@@ -23,7 +23,8 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create  # MEtodo sin terminar
+  # Sign in
+  def create
     user = User.new()
     user.username = (params[:username])
     user.password = (params[:password])
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
     user.token      =  (params[:token])
     user.valid_up = (params[:valid_up])
     user.active = (params[:active])
-    if transfer.save
+    if user.save
      render json: 'The user was Created', status: :ok
    else
      render json: user.errors, status: :unprocessable_entity
