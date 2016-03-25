@@ -11,3 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
+
+devnotes.txt
