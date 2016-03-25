@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def index
-render :text => "Hola esto es el logout"
+    render :text => "Hola esto es el login"
   end
 
   def logout
