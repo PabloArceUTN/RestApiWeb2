@@ -29,9 +29,7 @@ class UsersController < ApplicationController
     user.username = (params[:username])
     user.password = (params[:password])
     user.firstname = (params[:firstname])
-    user.token      =  (params[:token])
-    user.valid_up = (params[:valid_up])
-    user.active = (params[:active])
+    user.active = true
     if user.save
      render json: 'The user was Created', status: :ok
    else
