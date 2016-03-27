@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-    render json: @products, status: :ok
+    #@products = Product.where(:active => true).all
+    render json: Product.where(:active => true).all, status: :ok
   end
 
   # GET /products/1
@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+  end
+  #Session Management Section
+  def login
+    render json: User.where(:active => true).all, status: :ok
   end
 
   # GET /products/1/edit
