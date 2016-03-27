@@ -11,9 +11,13 @@ class SessionsController < ApplicationController
   end
 
   def logout
-    user = User.find_by(username: params[:username])
-    @new_token = User.get_new_token
-    user.update_attribute(:token, @new_token )
-  render :text => @new_toke
+    user1 = User.find_by(token: params[:token])
+    if user1
+      @new_token = User.get_new_token
+      user1.update_attribute(:token, @new_token )
+      render json: '[{"message": "Successful logout"}]', status: 200
+    else
+      render json: '[{"error": "Unknown Token"}]', status: 422
+    end
   end
 end
