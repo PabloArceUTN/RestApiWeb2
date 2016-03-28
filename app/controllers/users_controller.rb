@@ -23,18 +23,18 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
-  def create  # MEtodo sin terminar
+  # Sign in
+  def create
     user = User.new()
     user.username = (params[:username])
     user.password = (params[:password])
     user.firstname = (params[:firstname])
-    user.token      =  (params[:token])
-    user.valid_up = (params[:valid_up])
-    user.active = (params[:active])
-    if transfer.save
-     render json: 'The user was Created', status: :ok
+    user.valid_up = DateTime.now
+    user.active = true
+    if user.save
+     render json: '{"message":"The user was Created"}', status: 201
    else
-     render json: user.errors, status: :unprocessable_entity
+     render json: '{"message": "'+user.errors+'"}', status: 422
    end
   end
 
