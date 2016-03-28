@@ -9,10 +9,11 @@ class ApplicationController < ActionController::Base
   #def @auth = false
   #def @pass = nil
   def authenticate
-    # render :text => params
+     #render :text => params
     if ((params[:controller] != "sessions" && params[:action] != "logout")||(params[:controller] != "sessions" && params[:action] != "index"))
       if (params[:controller] != "users" && params[:action] != "create")
-        if !User.find_by(token: params[:token])
+        user = User.find_by(token: params[:token])
+        if !user || user.valid_up < DateTime.now
           render json: '[{"error":"Unauthorized"}]', status: 401
         end
       end
