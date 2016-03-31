@@ -5,16 +5,19 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    render json: @user, status: :ok
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
+   render json: @user, status: :ok
   end
 
   # GET /users/new
   def new
-    @user = User.new
+
   end
 
   # GET /users/1/edit
@@ -27,14 +30,16 @@ class UsersController < ApplicationController
   def create
     user = User.new()
     user.username = (params[:username])
-    user.password = (params[:password])
+    user.password_digest = (params[:password_digest])
     user.firstname = (params[:firstname])
+    user.token = (params[:token])
     user.valid_up = DateTime.now
     user.active = true
     if user.save
      render json: '{"message":"The user was Created"}', status: 201
    else
-     render json: '{"message": "'+user.errors+'"}', status: 422
+  #   render json: '{"message": "'+user.errors+'"}', status: 422
+    render json: user.errors, status: :unprocessable_entity
    end
   end
 
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
   def update
     user = User.find_by id: (params[:id])
     user.username = (params[:username])
-    user.password = (params[:password])
+    user.password_digest = (params[:password_digest])
     user.firstname = (params[:firstname])
    #user.token      =  (params[:token])
     user.valid_up = (params[:valid_up])
@@ -70,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :firstname, :token, :valid_up, :active)
+      params.require(:user).permit(:username, :password_digest, :firstname, :token, :valid_up, :active)
     end
 end
