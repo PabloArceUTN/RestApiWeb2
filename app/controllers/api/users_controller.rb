@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def create
     user = User.new()
     user.username = (params[:username])
-    user.password_digest = (params[:password_digest])
+    user.password = (params[:password])
     user.firstname = (params[:firstname])
     user.token = (params[:token])
     user.valid_up = DateTime.now
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     user = User.find_by id: (params[:id])
     user.username = (params[:username])
-    user.password_digest = (params[:password_digest])
+    user.password= (params[:password])
     user.firstname = (params[:firstname])
    #user.token      =  (params[:token])
     user.valid_up = (params[:valid_up])
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password_digest, :firstname, :token, :valid_up, :active)
+      params.require(:user).permit(:username, :password, :firstname, :token, :valid_up, :active)
     end
 end
 end
