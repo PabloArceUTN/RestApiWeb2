@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   #def @auth = false
   #def @pass = nil
   def authenticate
-     #render :text => params
+     # => render :text => params
     if ((params[:controller] != "sessions" && params[:action] != "logout")||(params[:controller] != "sessions" && params[:action] != "index"))
       if (params[:controller] != "users" && params[:action] != "create")
         user = User.find_by(token: params[:token])
