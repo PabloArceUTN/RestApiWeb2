@@ -1,3 +1,4 @@
+module Api
 class SessionsController < ApplicationController
   def index
     user = User.find_by(username: params[:username])
@@ -20,4 +21,5 @@ class SessionsController < ApplicationController
       render json: '[{"error": "Unknown Token"}]', status: 422
     end
   end
+end
 end
