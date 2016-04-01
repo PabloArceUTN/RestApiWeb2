@@ -1,3 +1,4 @@
+module Api
 class TransfersController < ApplicationController
   before_action :set_transfer, only: [:show, :edit, :update, :destroy]
 
@@ -57,4 +58,5 @@ class TransfersController < ApplicationController
     def transfer_params
       params.require(:transfer).permit(:product_req_id, :product_offer_id, :active)
     end
+end
 end

@@ -1,3 +1,4 @@
+module Api
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -75,4 +76,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :description, :active, :user_id)
     end
+end
 end

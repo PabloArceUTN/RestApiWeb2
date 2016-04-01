@@ -1,3 +1,4 @@
+module Api
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -77,4 +78,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:username, :password_digest, :firstname, :token, :valid_up, :active)
     end
+end
 end
