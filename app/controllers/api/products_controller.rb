@@ -32,6 +32,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    if params[:token]
      product = Product.new()
      product.name = (params[:name])
      product.description = (params[:description])
@@ -42,11 +43,15 @@ class ProductsController < ApplicationController
     else
       render json: product.errors, status: :unprocessable_entity
     end
+  else
+        render json: '[{"error":"Unauthorized"}]', status: 401
+  end
   end
 
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+
     product = Product.find_by id: (params[:id])
     product.name = (params[:name])
     product.description = (params[:description])
@@ -57,11 +62,13 @@ class ProductsController < ApplicationController
     else
       render json: product.errors, status: :unprocessable_entity
     end
+
   end
 
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+
     @product.destroy
       render json: '[{"message":"The product was Deleted"}]', status: :ok
   end

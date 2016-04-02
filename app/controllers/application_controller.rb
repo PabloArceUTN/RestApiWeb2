@@ -10,7 +10,11 @@ class ApplicationController < ActionController::Base
   #def @auth = false
   #def @pass = nil
   def authenticate
+<<<<<<< HEAD
+     # => render :text => params
+=======
      #render :text => params
+>>>>>>> refs/remotes/origin/master
     if ((params[:controller] != "api/sessions" && params[:action] != "logout")||(params[:controller] != "api/sessions" && params[:action] != "index"))
       if (params[:controller] != "api/users" && params[:action] != "create")
         user = User.find_by(token: params[:token])
