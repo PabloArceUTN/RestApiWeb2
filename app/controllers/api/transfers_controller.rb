@@ -26,6 +26,7 @@ class TransfersController < ApplicationController
   # POST /transfers
   # POST /transfers.json
   def create
+    if params[:token]
     transfer = Transfer.new()
     transfer.product_req_id = (params[:product_req_id])
     transfer.product_offer_id = (params[:product_offer_id])
@@ -35,6 +36,9 @@ class TransfersController < ApplicationController
    else
      render json: transfer.errors, status: :unprocessable_entity
    end
+ else
+       render json: '[{"error":"Unauthorized"}]', status: 401
+ end
   end
 
   # PATCH/PUT /transfers/1

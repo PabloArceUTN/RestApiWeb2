@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
   #def @pass = nil
   def authenticate
      # => render :text => params
-    if ((params[:controller] != "sessions" && params[:action] != "logout")||(params[:controller] != "sessions" && params[:action] != "index"))
-      if (params[:controller] != "users" && params[:action] != "create")
+    if ((params[:controller] != "api/sessions" && params[:action] != "logout")||(params[:controller] != "api/sessions" && params[:action] != "index"))
+      if (params[:controller] != "api/users" && params[:action] != "create")
         user = User.find_by(token: params[:token])
         if !user || user.valid_up < DateTime.now
           render json: '[{"error":"Unauthorized"}]', status: 401
