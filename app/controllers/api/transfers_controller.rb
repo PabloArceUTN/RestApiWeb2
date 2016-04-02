@@ -40,12 +40,22 @@ class TransfersController < ApplicationController
   # PATCH/PUT /transfers/1
   # PATCH/PUT /transfers/1.json
   def update
-
+    transfer = Transfer.find_by id: (params[:id])
+    transfer.product_req_id = (params[:product_req_id])
+    transfer.product_offer_id = (params[:product_offer_id])
+    transfer.active = (params[:active])
+    if transfer.save
+      render json: 'The Transfer was Updated', status: :ok
+    else
+      render json: product.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /transfers/1
   # DELETE /transfers/1.json
   def destroy
+    @transfer.destroy
+      render json: 'The transfer was Deleted', status: :ok
   end
 
   private
