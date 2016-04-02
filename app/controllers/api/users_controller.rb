@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   def create
     user = User.new()
     user.username = (params[:username])
-    user.password_digest = (params[:password_digest])
+    user.password = (params[:password])
     user.firstname = (params[:firstname])
     user.token = (params[:token])
     user.valid_up = DateTime.now
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     user = User.find_by id: (params[:id])
     user.username = (params[:username])
-    user.password_digest = (params[:password_digest])
+    user.password = (params[:password])
     user.firstname = (params[:firstname])
    #user.token      =  (params[:token])
     user.valid_up = (params[:valid_up])
