@@ -62,7 +62,6 @@ module Api
     # DELETE /products/1
     # DELETE /products/1.json
     def destroy
-      @product.destroy
       render json: '[{"message":"The product was Deleted"}]', status: :ok
     rescue ActiveRecord::RecordNotFound
       render json: '[{"error":"record not found"}]', status: 404

@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     #check for an existent user and execute the password authentication
     if user && user.authenticate(params[:password])
       user.update_attribute(:valid_up, DateTime.now + 30.minutes)
+      #30.minutes.from_now.to_s
       render json: "[{\"token\": \"#{user.token}\"}]", status: 200
     else
       render json: '[{"error":"Submited information does not match"}]'
