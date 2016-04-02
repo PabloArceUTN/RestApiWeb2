@@ -10,13 +10,14 @@ class ApplicationController < ActionController::Base
   #def @auth = false
   #def @pass = nil
   def authenticate
-
-    if ((params[:controller] != "api/sessions" && params[:action] != "logout")||(params[:controller] != "api/sessions" && params[:action] != "index"))
-      if (params[:controller] != "api/users" && params[:action] != "create")
-        user = User.find_by(token: params[:token])
-        if !user || user.valid_up < DateTime.now
-          render json: '[{"error":"Unauthorized"}]', status: 401
-        end
+    #render :text => params[:action]
+    if (params[:controller] != "api/sessions")
+      if (params[:controller] == "api/users" && params[:action] == "create")
+        return
+      end
+      user = User.find_by(token: params[:token])
+      if !user || user.valid_up < DateTime.now
+        render json: '[{"error":"Unauthorized"}]', status: 401
       end
     end
     #"controller":"users","action":"show","id":"login" si se va a registrar dejar pasar
@@ -25,9 +26,4 @@ class ApplicationController < ActionController::Base
     #   #render json: '[{"error":"Unauthorized"}]', status: 401
     # end
   end
-
-  # Public resources are a list whit unrestricted access controllers
-  # def public_resources
-  #   return {user: => :create, :session => :index}
-  # end
 end
