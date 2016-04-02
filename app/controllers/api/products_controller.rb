@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
      product.active = (params[:active])
      product.user_id = (params[:user_id])
      if product.save
-      render json: 'The product was Created', status: :ok
+      render json: '[{"message":"The product was Created"}]', status: :ok
     else
       render json: product.errors, status: :unprocessable_entity
     end
@@ -53,7 +53,7 @@ class ProductsController < ApplicationController
     product.active = (params[:active])
     product.user_id = (params[:user_id])
     if product.save
-      render json: 'The product was Updated', status: :ok
+      render json: '[{"message":"The product was Updated"}]', status: :ok
     else
       render json: product.errors, status: :unprocessable_entity
     end
@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-      render json: 'The product was Deleted', status: :ok
+      render json: '[{"message":"The product was Deleted"}]', status: :ok
   end
 
   private

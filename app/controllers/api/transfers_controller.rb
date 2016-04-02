@@ -12,6 +12,8 @@ class TransfersController < ApplicationController
   # GET /transfers/1
   # GET /transfers/1.json
   def show
+    @transfer = Transfer.find(params[:id])
+   render json: @transfer, status: :ok
   end
 
   # GET /transfers/new
@@ -31,7 +33,7 @@ class TransfersController < ApplicationController
     transfer.product_offer_id = (params[:product_offer_id])
     transfer.active = (params[:active])
     if transfer.save
-     render json: 'The transfer was Created', status: :ok
+     render json: '[{"message":"The transfer was Created"}]', status: :ok
    else
      render json: transfer.errors, status: :unprocessable_entity
    end
@@ -45,7 +47,7 @@ class TransfersController < ApplicationController
     transfer.product_offer_id = (params[:product_offer_id])
     transfer.active = (params[:active])
     if transfer.save
-      render json: 'The Transfer was Updated', status: :ok
+      render json: '[{"message":"The Transfer was Updated"}]', status: :ok
     else
       render json: product.errors, status: :unprocessable_entity
     end
@@ -55,7 +57,7 @@ class TransfersController < ApplicationController
   # DELETE /transfers/1.json
   def destroy
     @transfer.destroy
-      render json: 'The transfer was Deleted', status: :ok
+      render json: '[{"message":"The transfer was Deleted"}]', status: :ok
   end
 
   private
