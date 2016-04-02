@@ -1,0 +1,550 @@
+{
+	"id": "6908f505-f209-108d-0789-d5a4e063e450",
+	"name": "RestAPI",
+	"description": "",
+	"order": [
+		"506337c4-9c93-1e0a-66ec-ed142f9b4571",
+		"a265c881-cb9d-1109-c84c-145008fd3d38",
+		"7628d7a7-0f69-7212-f42e-a12ac5a8e9f4",
+		"f755ff36-ed70-a00f-32b3-c5aa150b27f9",
+		"6007ab2f-c460-ba53-7ee3-c4dede841410",
+		"b771b01b-51a0-fb8f-7e3b-bed103c13930",
+		"7cd1efb6-c8b5-c0db-157b-7f57910aa2ae",
+		"ba3effe4-d84c-6bf9-f6e6-187158539796",
+		"704cb937-f71c-c74a-58e1-45d2e674b669",
+		"fc47a99a-269f-bd69-3ff8-a8faaa9b9d8f",
+		"b4b399e7-8add-6196-1465-5fa8c2de7ac2",
+		"99184265-5c7b-99ed-f562-932417d22073",
+		"91ed349d-cd64-f2ff-801a-ff667dcd5cc4",
+		"13ada08f-eaaf-7202-7b02-12fd25dda8d8"
+	],
+	"folders": [],
+	"timestamp": 1458974729938,
+	"owner": "310844",
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "13ada08f-eaaf-7202-7b02-12fd25dda8d8",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/transfers/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459562602736,
+			"name": "Transfer Delete",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "506337c4-9c93-1e0a-66ec-ed142f9b4571",
+			"headers": "token: 90891e85a3194a36af4499d1b9c12d09\n",
+			"url": "http://api.swapingzone.com:3000/products",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "name",
+					"value": "Guitar",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "PRS 6 string guitar - purple/black sunburn design",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "active",
+					"value": "true",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "76",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459562644360,
+			"name": "Create Product",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "6007ab2f-c460-ba53-7ee3-c4dede841410",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/products?token=80f5709c6f57489f9b2cfac82c20486c",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "username",
+					"value": "Toto8",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "cootrtrtrrtrtrtr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "firstname",
+					"value": "Jose",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459541647746,
+			"name": "Get Products",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "704cb937-f71c-c74a-58e1-45d2e674b669",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/users/?token=80f5709c6f57489f9b2cfac82c20486c",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "username",
+					"value": "Toto8",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "cootrtrtrrtrtrtr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "firstname",
+					"value": "Jose",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459544238644,
+			"name": "Get Users",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "7628d7a7-0f69-7212-f42e-a12ac5a8e9f4",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/logout",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"data": [
+				{
+					"key": "token",
+					"value": "5dfc8477815f4986aeff3659ce0e29e1",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Logout",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1459528821272,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "7cd1efb6-c8b5-c0db-157b-7f57910aa2ae",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/products/2",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459542393983,
+			"name": "Products Delete",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "91ed349d-cd64-f2ff-801a-ff667dcd5cc4",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/transfers/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PATCH",
+			"data": [
+				{
+					"key": "product_req_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product_offer_id",
+					"value": "3",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "active",
+					"value": "true",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459558243294,
+			"name": "UpdateTransfer",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "99184265-5c7b-99ed-f562-932417d22073",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/transfers?token=80f5709c6f57489f9b2cfac82c20486c",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": [
+				{
+					"key": "username",
+					"value": "Toto8",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "cootrtrtrrtrtrtr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "firstname",
+					"value": "Jose",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459557938678,
+			"name": "Get Transfer",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "a265c881-cb9d-1109-c84c-145008fd3d38",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/login",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"data": [
+				{
+					"key": "username",
+					"value": "Toto1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "cootrtrtrrtrtrtr",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"name": "Login",
+			"description": "Post Login",
+			"descriptionFormat": "html",
+			"time": 1459528314552,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "b4b399e7-8add-6196-1465-5fa8c2de7ac2",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/transfers",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "product_req_id",
+					"value": "8",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "product_offer_id",
+					"value": "9",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "active",
+					"value": "true",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459562599448,
+			"name": "Create Transfer",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "b771b01b-51a0-fb8f-7e3b-bed103c13930",
+			"headers": "token: 80f5709c6f57489f9b2cfac82c20486c\n",
+			"url": "http://api.swapingzone.com:3000/products/4",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PATCH",
+			"data": [
+				{
+					"key": "name",
+					"value": "Guitar",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Jackson King V Vnt10",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "active",
+					"value": "true",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459541632223,
+			"name": "Update Product",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "ba3effe4-d84c-6bf9-f6e6-187158539796",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/users/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "PATCH",
+			"data": [
+				{
+					"key": "username",
+					"value": "Americo",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345678",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "firstname",
+					"value": "Lel",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "token",
+					"value": "80f5709c6f57489f9b2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459543207360,
+			"name": "Update User",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "f755ff36-ed70-a00f-32b3-c5aa150b27f9",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/users",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "Toto10",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "cootrtrtrrtrtrtr",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "firstname",
+					"value": "Jose",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459555392643,
+			"name": "Create User",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		},
+		{
+			"id": "fc47a99a-269f-bd69-3ff8-a8faaa9b9d8f",
+			"headers": "",
+			"url": "http://api.swapingzone.com:3000/users/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "token",
+					"value": "80f5709c9f57489fpb2cfac82c20486c",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1459555306727,
+			"name": "User Delete",
+			"description": "",
+			"collectionId": "6908f505-f209-108d-0789-d5a4e063e450",
+			"responses": []
+		}
+	]
+}
