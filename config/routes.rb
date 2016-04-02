@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   constraints subdomain: 'api' do
-namespace :api , path: '/' do
-  resources :transfers
-  resources :products
-  resources :users
-  post 'login' => 'sessions#index'
-  post 'logout' => 'sessions#logout'
+    namespace :api , path: '/' do
+      resources :transfers
+      resources :products
+      resources :users
+      post 'login' => 'sessions#index'
+      post 'logout' => 'sessions#logout'
+    end
   end
-end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

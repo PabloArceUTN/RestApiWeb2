@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    render json: @user, status: :ok
+    render json: @users, status: :ok
   end
 
   # GET /users/1
@@ -49,13 +49,12 @@ class UsersController < ApplicationController
   def update
     user = User.find_by id: (params[:id])
     user.username = (params[:username])
-    user.password= (params[:password])
+    user.password = (params[:password])
     user.firstname = (params[:firstname])
-   #user.token      =  (params[:token])
     user.valid_up = (params[:valid_up])
     user.active = (params[:active])
     if user.save
-      render json: 'The user was Updated', status: :ok
+      render json: '[{"message":"The user was Updated"}]', status: :ok
     else
       render json: user.errors, status: :unprocessable_entity
     end
@@ -65,7 +64,7 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user.destroy
-      render json: 'The user was Deleted', status: :ok
+      render json: '[{"message":"The user was Deleted"}]', status: :ok
   end
 
   private
