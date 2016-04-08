@@ -62,6 +62,7 @@ module Api
     # DELETE /products/1
     # DELETE /products/1.json
     def destroy
+      @product.destroy
       render json: '[{"message":"The product was Deleted"}]', status: :ok
     rescue ActiveRecord::RecordNotFound
       render json: '[{"error":"record not found"}]', status: 404
@@ -70,9 +71,13 @@ module Api
     private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
+      begin
       @product = Product.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      render json: '[{"error":"record not found"}]', status: 404
+     rescue ActiveRecord::RecordNotFound
+       render json: '[{"error":"record not found"}]', status: 404
+    rescue ActiveRecord::StatementInvalid
+       render json: '[{"error":"record is in transfer table"}]', status: 404
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
