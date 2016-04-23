@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       user.update_attribute(:valid_up, DateTime.now + 30.minutes)
       #30.minutes.from_now.to_s
-      render json: "[{\"token\": \"#{user.token}\"}]", status: 200
+      render json: "{\"token\": \"#{user.token}\"}", status: 200
     else
-      render json: '[{"error":"Submited information does not match"}]'
+      render json: '{"error":"Submited information does not match"}', status: 422
     end
   end
 
@@ -17,9 +17,9 @@ class SessionsController < ApplicationController
     if user1
       @new_token = User.get_new_token
       user1.update_attribute(:token, @new_token )
-      render json: '[{"message": "Successful logout"}]', status: 200
+      render json: '{"message": "Successful logout"}', status: 200
     else
-      render json: '[{"error": "Unknown Token"}]', status: 422
+      render json: '{"error": "Unknown Token"}', status: 422
     end
   end
 end
