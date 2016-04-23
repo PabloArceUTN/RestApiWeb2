@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317232334) do
+ActiveRecord::Schema.define(version: 20160421214823) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20160317232334) do
     t.integer  "product_req_id",   limit: 4
     t.integer  "product_offer_id", limit: 4
     t.boolean  "active"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "state",            limit: 255
   end
 
   add_index "transfers", ["product_offer_id"], name: "fk_rails_8d607ad088", using: :btree
