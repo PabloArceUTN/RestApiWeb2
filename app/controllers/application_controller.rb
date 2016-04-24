@@ -17,7 +17,13 @@ class ApplicationController < ActionController::Base
       end
       user = User.find_by(token: params[:token])
       if !user || user.valid_up < DateTime.now
-        render json: '[{"error":"Unauthorized"}]', status: 401
+        render json: '{"error":"Unauthorized"}', status: 401
+      end
+    end
+    if (params[:controller] == "api/sessions" && params[:action] == "chekToken")
+      user = User.find_by(token: params[:token])
+      if !user || user.valid_up < DateTime.now
+        render json: '{"error":"Unauthorized"}', status: 401
       end
     end
     #"controller":"users","action":"show","id":"login" si se va a registrar dejar pasar
