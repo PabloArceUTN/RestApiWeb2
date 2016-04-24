@@ -32,7 +32,7 @@ module Api
       product = Product.new()
       product.name = (params[:name])
       product.description = (params[:description])
-      product.active = (params[:active])
+      product.active =true
       product.user_id = (params[:user_id])
       if product.save
         render json: '[{"message":"The product was Created"}]', status: :ok
