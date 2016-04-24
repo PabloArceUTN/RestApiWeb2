@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users
       post 'login' => 'sessions#index'
       post 'logout' => 'sessions#logout'
+      get 'check' => 'sessions#chekToken'
     end
   end
 
