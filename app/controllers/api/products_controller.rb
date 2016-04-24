@@ -5,8 +5,9 @@ module Api
     # GET /products
     # GET /products.json
     def index
-      #@products = Product.where(:active => true).all
-      render json: Product.where(:active => true).all, status: :ok
+          @user = User.find_by(token: params[:token])
+        #  @products = Product.where(:user_id =>@user.id).all
+       render json: Product.where(:user_id => @user.id , :user_id => @user.id).all, status: :ok
     end
 
     # GET /products/1
@@ -31,7 +32,7 @@ module Api
       product = Product.new()
       product.name = (params[:name])
       product.description = (params[:description])
-      product.active = (params[:active])
+      product.active = true
       product.user_id = (params[:user_id])
       if product.save
         render json: '[{"message":"The product was Created"}]', status: :ok
@@ -62,10 +63,10 @@ module Api
     # DELETE /products/1
     # DELETE /products/1.json
     def destroy
-      @product.destroy
-      render json: '[{"message":"The product was Deleted"}]', status: :ok
-    rescue ActiveRecord::RecordNotFound
-      render json: '[{"error":"record not found"}]', status: 404
+        @product.destroy
+        render json: '[{"message":"The product was Deleted"}]', status: :ok
+     rescue  ActiveRecord::StatementInvalid
+       render json: '[{"error":"The Product part of a transfer"}]', status: 422
     end
 
     private
