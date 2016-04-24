@@ -31,7 +31,7 @@ module Api
       transfer = Transfer.new()
       transfer.product_req_id = (params[:product_req_id])
       transfer.product_offer_id = (params[:product_offer_id])
-      transfer.active = (params[:active])
+      transfer.active = true
       transfer.state ="pending"
       if transfer.save
         render json: '[{"message":"The transfer was Created"}]', status: :ok
