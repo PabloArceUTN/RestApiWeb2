@@ -5,7 +5,8 @@ module Api
     # GET /transfers
     # GET /transfers.json
     def index
-      @transfer = Transfer.all
+          @user = User.find_by(token: params[:token])
+      @transfer = Transfer.where(:user_id => @user.id , :active => true , :state => "pending").all
       render json: @transfer, status: :ok
     end
 
@@ -31,6 +32,7 @@ module Api
       transfer = Transfer.new()
       transfer.product_req_id = (params[:product_req_id])
       transfer.product_offer_id = (params[:product_offer_id])
+      transfer.user_id = (params[:user_id])
       transfer.active = true
       transfer.state ="pending"
       if transfer.save
@@ -41,21 +43,43 @@ module Api
     rescue  ActiveRecord::InvalidForeignKey
       render json: '[{"error":"No valid foreign keys asignation"}]', status: 422
     end
-
+ # def changeState
+ #  transfer = Transfer.find(1)
+ #  transfer.state = "finished"
+ #  @userOne=Product.find(:id => 4 )
+ #  @userTwo=Product.find(:id => 3 )
+ #  userOne.user_id = @userTwo.id
+ #  userOne.save
+ #  userTwo.user_id = @userOne.id
+ #  userTwo.save
+ #    transfer.save
+ # end
     # PATCH/PUT /transfers/1
     # PATCH/PUT /transfers/1.json
     def update
-      transfer = Transfer.find_by id: (params[:id])
-      transfer.product_req_id = (params[:product_req_id])
-      transfer.product_offer_id = (params[:product_offer_id])
-      transfer.active = (params[:active])
-      if transfer.save
-        render json: '[{"message":"The Transfer was Updated"}]', status: :ok
-      else
-        render json: product.errors, status: :unprocessable_entity
-      end
-    rescue  ActiveRecord::InvalidForeignKey
-      render json: '[{"error":"No valid foreign keys asignation"}]', status: 422
+      transfer =Transfer.find_by id: (params[:id])
+      transfer.state = "finished"
+      @userOne=Product.find(params[:product_offer_id])
+      @userTwo=Product.find(params[:product_req_id])
+      @x=@userOne.user_id
+      @userOne.user_id = @userTwo.user_id
+      @userTwo.user_id = @x
+      @userOne.save
+      @userTwo.save
+        transfer.save
+
+
+      # transfer = Transfer.find_by id: (params[:id])
+      # transfer.product_req_id = (params[:product_req_id])
+      # transfer.product_offer_id = (params[:product_offer_id])
+      # transfer.active = (params[:active])
+      # if transfer.save
+      #   render json: '[{"message":"The Transfer was Updated"}]', status: :ok
+      # else
+      #   render json: product.errors, status: :unprocessable_entity
+      # end
+    # rescue  ActiveRecord::InvalidForeignKey
+       render json: '[{"message":"transfer succesfull"}]', status: ok
     end
 
     # DELETE /transfers/1
@@ -77,7 +101,7 @@ module Api
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transfer_params
-      params.require(:transfer).permit(:product_req_id, :product_offer_id, :active)
+      params.require(:transfer).permit(:product_req_id, :product_offer_id, :active, :user_id)
     end
   end
 end
