@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'login' => 'sessions#index'
       post 'logout' => 'sessions#logout'
       get 'check' => 'sessions#chekToken'
+      patch 'changeState' => 'transfer#changeState'
     end
   end
 

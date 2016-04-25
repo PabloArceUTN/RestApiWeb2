@@ -6,8 +6,11 @@ module Api
     # GET /products.json
     def index
           @user = User.find_by(token: params[:token])
-        #  @products = Product.where(:user_id =>@user.id).all
-       render json: Product.where(:user_id => @user.id , :user_id => @user.id).all, status: :ok
+    if params[:user_id] && params[:token]
+      render json: Product.where(:user_id => @user.id , :active => true).all, status: :ok
+    else
+             render json: Product.all, status: :ok
+    end
     end
 
     # GET /products/1
