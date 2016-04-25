@@ -37,6 +37,7 @@ module Api
       product.description = (params[:description])
       product.active = true
       product.user_id = (params[:user_id])
+      product.url_img = (params[:url_img])
       if product.save
         render json: '[{"message":"The product was Created"}]', status: :ok
       else
@@ -54,6 +55,7 @@ module Api
       product.description = (params[:description])
       product.active = (params[:active])
       product.user_id = (params[:user_id])
+      product.url_img = (params[:url_img])
       if product.save
         render json: '[{"message":"The product was Updated"}]', status: :ok
       else
