@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421214823) do
+ActiveRecord::Schema.define(version: 20160425022043) do
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 20160421214823) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "state",            limit: 255
+    t.integer  "user_id",          limit: 4
   end
 
   add_index "transfers", ["product_offer_id"], name: "fk_rails_8d607ad088", using: :btree
   add_index "transfers", ["product_req_id"], name: "fk_rails_e001a2452a", using: :btree
+  add_index "transfers", ["user_id"], name: "fk_rails_344b52b7fd", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        limit: 255
@@ -50,4 +52,5 @@ ActiveRecord::Schema.define(version: 20160421214823) do
   add_foreign_key "products", "users"
   add_foreign_key "transfers", "products", column: "product_offer_id"
   add_foreign_key "transfers", "products", column: "product_req_id"
+  add_foreign_key "transfers", "users"
 end
