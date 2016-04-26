@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       post 'logout' => 'sessions#logout'
       get 'check' => 'sessions#chekToken'
       patch 'changeState' => 'transfer#changeState'
+      # patch 'validate' => 'verify_user#validate'
+      #  put '/validate/:id', to: 'verify_user#validate', as: 'vali'
+      resources :verify_user
     end
   end
 

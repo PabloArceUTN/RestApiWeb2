@@ -1,0 +1,5 @@
+
+
+<h2>Hi  <%= @User.firstname %></h2><br>
+<% @id=User.find_by(username:@User.username)%>
+<a href="http://api.swapingzone.com:3000/verify_user?id=<%=@id.id%>">Verify acount!  </a>

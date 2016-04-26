@@ -23,7 +23,19 @@ module Swaping
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     # ...
+      config.active_job.queue_adapter = :delayed_job
+      config.action_mailer.default_url_options = { host: 'example.com'}
 
+      config.action_mailer.delivery_method = :smtp
+      config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                       587,
+    domain:               'gmail.com',
+    user_name:            'jabibleiton@gmail.com',
+    password:             '24947783',
+    authentication:       'plain',
+    enable_starttls_auto: true
+      }
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
