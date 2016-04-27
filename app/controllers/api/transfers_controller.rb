@@ -7,12 +7,16 @@ module Api
     def index
       @user = User.find_by(token: params[:token])
       @transfer = Transfer.where(:user_id => @user.id , :active => true , :state => "pending").all
-       @d= 0
-
+      @d= 0
+      if(!params[:deal])
+        @transfer = Transfer.where(:user_id => @user.id , :active => true , :state => "pending").all
+      else
+        @transfer = Transfer.where(:to_whom => @user.id , :active => true , :state => "pending").all
+      end
       while @d < @transfer.size  do
         @transfer[@d].product_offer_name = Product.find(@transfer[@d].product_offer_id).name
         @transfer[@d].product_req_name = Product.find(@transfer[@d].product_req_id).name
-        @transfer[@d].to_whom = Product.find(@transfer[@d].product_req_id).user_id
+        #@transfer[@d].to_whom = Product.find(@transfer[@d].product_req_id).user_id
         @d = @d + 1
       end
 
