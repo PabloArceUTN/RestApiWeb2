@@ -5,7 +5,7 @@ module Api
     # GET /transfers
     # GET /transfers.json
     def index
-          @user = User.find_by(token: params[:token])
+      @user = User.find_by(token: params[:token])
       @transfer = Transfer.where(:user_id => @user.id , :active => true , :state => "pending").all
       render json: @transfer, status: :ok
     end
@@ -43,17 +43,17 @@ module Api
     rescue  ActiveRecord::InvalidForeignKey
       render json: '[{"error":"No valid foreign keys asignation"}]', status: 422
     end
- # def changeState
- #  transfer = Transfer.find(1)
- #  transfer.state = "finished"
- #  @userOne=Product.find(:id => 4 )
- #  @userTwo=Product.find(:id => 3 )
- #  userOne.user_id = @userTwo.id
- #  userOne.save
- #  userTwo.user_id = @userOne.id
- #  userTwo.save
- #    transfer.save
- # end
+    # def changeState
+    #  transfer = Transfer.find(1)
+    #  transfer.state = "finished"
+    #  @userOne=Product.find(:id => 4 )
+    #  @userTwo=Product.find(:id => 3 )
+    #  userOne.user_id = @userTwo.id
+    #  userOne.save
+    #  userTwo.user_id = @userOne.id
+    #  userTwo.save
+    #    transfer.save
+    # end
     # PATCH/PUT /transfers/1
     # PATCH/PUT /transfers/1.json
     def update
@@ -66,7 +66,7 @@ module Api
       @userTwo.user_id = @x
       @userOne.save
       @userTwo.save
-        transfer.save
+      transfer.save
 
 
       # transfer = Transfer.find_by id: (params[:id])
@@ -78,8 +78,8 @@ module Api
       # else
       #   render json: product.errors, status: :unprocessable_entity
       # end
-    # rescue  ActiveRecord::InvalidForeignKey
-       render json: '[{"message":"transfer succesfull"}]', status: ok
+      # rescue  ActiveRecord::InvalidForeignKey
+      render json: '[{"message":"transfer succesfull"}]', status: ok
     end
 
     # DELETE /transfers/1
