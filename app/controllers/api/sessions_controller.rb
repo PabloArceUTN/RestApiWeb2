@@ -25,7 +25,7 @@ module Api
 
     # Check for a valid token
     def chekToken
-      render json: '{"message": true}', status: 200
+      render json: '[{"message": true}]', status: 200
     end
   end
 end
