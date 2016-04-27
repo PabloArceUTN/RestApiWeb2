@@ -7,6 +7,14 @@ module Api
     def index
           @user = User.find_by(token: params[:token])
       @transfer = Transfer.where(:user_id => @user.id , :active => true , :state => "pending").all
+       @d= 0
+
+      while @d < @transfer.size  do
+        @transfer[@d].product_offer_name = Product.find(@transfer[@d].product_offer_id).name
+        @transfer[@d].product_req_name = Product.find(@transfer[@d].product_req_id).name
+        @d = @d + 1
+      end
+
       render json: @transfer, status: :ok
     end
 
