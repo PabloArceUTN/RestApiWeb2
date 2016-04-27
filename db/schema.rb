@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427084615) do
+ActiveRecord::Schema.define(version: 20160427162043) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160427084615) do
     t.integer  "user_id",            limit: 4
     t.string   "product_req_name",   limit: 255
     t.string   "product_offer_name", limit: 255
+    t.string   "to_whom",            limit: 255
   end
 
   add_index "transfers", ["product_offer_id"], name: "fk_rails_8d607ad088", using: :btree
@@ -68,6 +69,8 @@ ActiveRecord::Schema.define(version: 20160427084615) do
     t.datetime "updated_at",                  null: false
     t.string   "email",           limit: 255
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "products", "users"
   add_foreign_key "transfers", "products", column: "product_offer_id"
