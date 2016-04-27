@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426022145) do
+ActiveRecord::Schema.define(version: 20160427084615) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   limit: 4,     default: 0, null: false
@@ -42,13 +42,15 @@ ActiveRecord::Schema.define(version: 20160426022145) do
   add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
   create_table "transfers", force: :cascade do |t|
-    t.integer  "product_req_id",   limit: 4
-    t.integer  "product_offer_id", limit: 4
+    t.integer  "product_req_id",     limit: 4
+    t.integer  "product_offer_id",   limit: 4
     t.boolean  "active"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "state",            limit: 255
-    t.integer  "user_id",          limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "state",              limit: 255
+    t.integer  "user_id",            limit: 4
+    t.string   "product_req_name",   limit: 255
+    t.string   "product_offer_name", limit: 255
   end
 
   add_index "transfers", ["product_offer_id"], name: "fk_rails_8d607ad088", using: :btree
