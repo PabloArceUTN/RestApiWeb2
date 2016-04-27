@@ -44,6 +44,7 @@ module Api
       transfer.user_id = (params[:user_id])
       transfer.active = true
       transfer.state ="pending"
+      transfer.to_whom = (params[:to_whom])
       if transfer.save
         render json: '[{"message":"The transfer was Created"}]', status: :ok
       else
