@@ -71,29 +71,47 @@ module Api
     # PATCH/PUT /transfers/1
     # PATCH/PUT /transfers/1.json
     def update
-      transfer =Transfer.find_by id: (params[:id])
+      # transfer =Transfer.find_by id: (params[:id])
+      # transfer.state = "finished"
+      # @userOne=Product.find(params[:product_offer_id])
+      # @userTwo=Product.find(params[:product_req_id])
+      # @x=@userOne.user_id
+      # @userOne.user_id = @userTwo.user_id
+      # @userTwo.user_id = @x
+      # @userOne.save
+      # @userTwo.save
+      # transfer.save
+      product1 = Product.find_by id: (params[:product_req_id])
+      product2 = Product.find_by id: (params[:product_offer_id])
+      # Offer product
+      product1.user_id = (params[:user_id])
+      if product1.save
+        # render json: '[{"message":"The Transfer was Updated"}]', status: :ok
+      else
+        render json: "{\"error\": \"not changed\"}", status: :unprocessable_entity
+      end
+      # Req product
+      product2.user_id = (params[:to_whom])
+      if product2.save
+        # render json: '[{"message":"The Transfer was Updated"}]', status: :ok
+      else
+        render json: "{\"error\": \"not changed\"}", status: :unprocessable_entity
+      end
+      # swapingzone
+      transfer = Transfer.find_by id: (params[:id])
+      transfer.product_req_id = (params[:product_req_id])
+      transfer.product_offer_id = (params[:product_offer_id])
+      transfer.user_id = (params[:user_id])
+      transfer.active = false
       transfer.state = "finished"
-      @userOne=Product.find(params[:product_offer_id])
-      @userTwo=Product.find(params[:product_req_id])
-      @x=@userOne.user_id
-      @userOne.user_id = @userTwo.user_id
-      @userTwo.user_id = @x
-      @userOne.save
-      @userTwo.save
-      transfer.save
-
-
-      # transfer = Transfer.find_by id: (params[:id])
-      # transfer.product_req_id = (params[:product_req_id])
-      # transfer.product_offer_id = (params[:product_offer_id])
-      # transfer.active = (params[:active])
-      # if transfer.save
-      #   render json: '[{"message":"The Transfer was Updated"}]', status: :ok
-      # else
-      #   render json: product.errors, status: :unprocessable_entity
-      # end
-      # rescue  ActiveRecord::InvalidForeignKey
-      render json: '[{"message":"transfer succesfull"}]', status: ok
+      transfer.to_whom = (params[:to_whom])
+      if transfer.save
+        render json: '[{"message":"The Transfer was Updated"}]', status: :ok
+      else
+        render json: product.errors, status: :unprocessable_entity
+      end
+      rescue  ActiveRecord::InvalidForeignKey
+      # render json: '[{"message":"transfer succesfull"}]', status: ok
     end
 
     # DELETE /transfers/1
