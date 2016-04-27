@@ -29,7 +29,7 @@ module Swaping
         origins '*'
         resource '*',
           :headers => :any,
-          :methods => [:post],
+          :methods => [:post, :put],
           :credentials => true,
           :max_age => 0
         # resource '*', :headers => :any, :methods => [:get, :post, :put, :delete]
