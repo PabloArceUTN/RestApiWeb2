@@ -54,8 +54,8 @@ module Api
       user.username = (params[:username])
       user.password = (params[:password])
       user.firstname = (params[:firstname])
-      user.valid_up = (params[:valid_up])
-      user.active = (params[:active])
+      user.valid_up = Date.Now
+      user.active = true
       user.email = (params[:email])
       if user.save
         render json: '[{"message":"The user was Updated"}]', status: :ok

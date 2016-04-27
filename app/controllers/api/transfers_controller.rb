@@ -12,6 +12,7 @@ module Api
       while @d < @transfer.size  do
         @transfer[@d].product_offer_name = Product.find(@transfer[@d].product_offer_id).name
         @transfer[@d].product_req_name = Product.find(@transfer[@d].product_req_id).name
+        @transfer[@d].to_whom = Product.find(@transfer[@d].product_req_id).user_id
         @d = @d + 1
       end
 
