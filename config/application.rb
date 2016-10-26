@@ -32,7 +32,7 @@ module Swaping
     port:                       587,
     domain:               'gmail.com',
     user_name:            'jabibleiton@gmail.com',
-    password:             '24947783',
+    password:             '',
     authentication:       'plain',
     enable_starttls_auto: true
       }
